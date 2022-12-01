@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations';
-import { getContacts } from '../../redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { getContacts } from 'redux/contacts/selectors';
 
 import {
   FormEl,
@@ -22,7 +22,8 @@ export const ContactForm = () => {
         return alert(`${contact.name} is already contacts.`);
       }
     }
-    dispatch(addContact({ name: name.value, phone: phone.value }));
+    console.log({ name: name.value, phone: phone.value });
+    dispatch(addContact({ name: name.value, number: phone.value }));
     form.reset();
   };
 

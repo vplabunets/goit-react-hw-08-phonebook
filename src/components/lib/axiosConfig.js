@@ -1,1 +1,1 @@
-export const axiosBaseUrl = 'https://637d165116c1b892ebc7525b.mockapi.io/';
+export const axiosBaseUrl = 'https://connections-api.herokuapp.com';
