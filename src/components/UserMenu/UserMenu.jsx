@@ -19,8 +19,7 @@ const styles = {
 export default function UserMenu() {
   const { user } = useAuth();
   const dispatch = useDispatch();
-  //   const name = useSelector(authSelectors.getUsername);
-  //   const avatar = defaultAvatar;
+
   const handleLogOut = () => dispatch(authOperations.logOut());
 
   return (
