@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { Wrapper, Button } from './ContactItem.styled';
+import { Wrapper } from './ContactItem.styled';
 import { deleteContact } from 'redux/contacts/operations';
-
+import { ListItem, Button, Typography } from '@mui/material';
 export const ContactItem = ({ contact }) => {
   const { name, number, id } = contact;
   const dispatch = useDispatch();
@@ -12,9 +12,18 @@ export const ContactItem = ({ contact }) => {
 
   return (
     <Wrapper>
-      <span>{name}:</span>
-      <span>{number}</span>
-      <Button contact={contact.id} type="button" onClick={contactCleaner}>
+      <ListItem a>
+        <Typography class="MuiTypography-subtitle" variant="string">
+          {name}:
+        </Typography>
+        <Typography variant="string">{number}</Typography>
+      </ListItem>
+      <Button
+        contact={contact.id}
+        type="button"
+        variant="contained"
+        onClick={contactCleaner}
+      >
         Delete
       </Button>
     </Wrapper>
