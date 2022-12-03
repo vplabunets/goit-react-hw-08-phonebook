@@ -2,6 +2,8 @@ import { useAuth } from 'hooks/useAuth';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import Button from '@mui/material/Button';
+
 const styles = {
   link: {
     display: 'inline-block',
@@ -21,11 +23,15 @@ const Navigation = () => {
   return (
     <nav>
       <NavLink to="/" style={styles.link}>
-        Главная
+        <Button type="button" variant="contained">
+          Main
+        </Button>
       </NavLink>
       {isLoggedIn && (
         <NavLink to="/contacts" style={styles.link}>
-          Contacts
+          <Button type="button" variant="contained">
+            Contacts
+          </Button>
         </NavLink>
       )}
     </nav>

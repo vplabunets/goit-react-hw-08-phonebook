@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { NavItem } from './AuthNav.styled';
 
 const styles = {
   link: {
@@ -17,12 +18,12 @@ const styles = {
 export default function AuthNav() {
   return (
     <div>
-      <NavLink to="/register" style={styles.link}>
-        Регистрация
-      </NavLink>
-      <NavLink to="/login" style={styles.link}>
-        Логин
-      </NavLink>
+      <NavItem to="/register" style={styles.link}>
+        <Button variant="contained">Sing up</Button>
+      </NavItem>
+      <NavItem to="/login" style={styles.link}>
+        <Button variant="contained">Sign in</Button>
+      </NavItem>
     </div>
   );
 }

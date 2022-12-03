@@ -22,7 +22,8 @@ export const ContactForm = () => {
         return alert(`${contact.name} is already contacts.`);
       }
     }
-    console.log({ name: name.value, phone: phone.value });
+    // console.log({ name: name.value, phone: phone.value });
+    // console.log(fetchContacts);
     dispatch(addContact({ name: name.value, number: phone.value }));
     form.reset();
   };
