@@ -1,19 +1,20 @@
-import React from 'react';
+import { React } from 'react';
 import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { Wrapper } from './ContactItem.styled';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact, updateContact } from 'redux/contacts/operations';
 import { ListItem, Button, Typography } from '@mui/material';
-export const ContactItem = ({ contact }) => {
+export const ContactItem = ({ contact, updater }) => {
   const { name, number, id } = contact;
+
   const dispatch = useDispatch();
   const contactCleaner = () => dispatch(deleteContact(id));
-
+  // const contactUpdater = () => dispatch(updateContact(id));
   return (
     <Wrapper>
-      <ListItem a>
-        <Typography class="MuiTypography-subtitle" variant="string">
+      <ListItem>
+        <Typography className="MuiTypography-subtitle" variant="string">
           {name}:
         </Typography>
         <Typography variant="string">{number}</Typography>
@@ -25,6 +26,14 @@ export const ContactItem = ({ contact }) => {
         onClick={contactCleaner}
       >
         Delete
+      </Button>
+      <Button
+        contact={contact}
+        type="button"
+        variant="contained"
+        onClick={updater}
+      >
+        Update
       </Button>
     </Wrapper>
   );
