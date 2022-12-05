@@ -13,7 +13,7 @@ const FormWrap = styled.div`
   flex-direction: column;
   margin: 0 auto;
   align-self: center;
-  align-items: flex-end;
+  align-items: center;
 
   &:not(:last-child) {
     margin-bottom: 10px;

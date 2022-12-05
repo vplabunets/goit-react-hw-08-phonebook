@@ -25,7 +25,6 @@ export default function UserMenu() {
 
   return (
     <div style={styles.container}>
-      {/* <img src={avatar} alt="" width="32" style={styles.avatar} /> */}
       <span style={styles.name}>Welcome, {user.email} </span>
       <Button type="button" variant="contained" onClick={handleLogOut}>
         Log out

@@ -52,7 +52,6 @@ const contactsSlice = createSlice({
     },
     [updateContact.pending]: handlePending,
     [updateContact.rejected]: handleRejected,
-
     [updateContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
@@ -61,12 +60,8 @@ const contactsSlice = createSlice({
           contact.name = action.payload.name;
           contact.number = action.payload.number;
         }
+        break;
       }
-
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.items.splice(index, 1);
     },
     [updateContact.rejected]: handleRejected,
   },

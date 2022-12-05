@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosBaseUrl } from 'lib/axiosConfig';
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -46,7 +45,7 @@ const logOut = createAsyncThunk(
         `${axiosBaseUrl}/users/logout`,
         credentials
       );
-      console.log();
+
       clearAuthHeader(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

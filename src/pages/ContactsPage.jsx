@@ -1,25 +1,24 @@
 import { useSelector } from 'react-redux';
-// import { fetchContacts } from 'redux/contacts/operations';
-import { getContacts, getError, getIsLoading } from 'redux/contacts/selectors';
-import { ContactForm } from '../components/ContactForm/ContactForm';
+import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { ContactList } from '../components/ContactList/ContactsList';
-import { Filter } from '../components/Filter/Filter';
 
-import { AppWrap, PageTitle, SectionTitle } from '../components/App/App.styled';
+import { AppWrap, SectionTitle } from '../components/App/App.styled';
+// import { useState } from 'react';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 
 export default function ContactsPage() {
+  // const [isOpenUpdater, setIsOpenUpdater] = useState(false);
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
 
+  // const handleOpenUpdater = status => setIsOpenUpdater(status);
   return (
     <AppWrap>
-      <PageTitle>Phonebook</PageTitle>
-      <ContactForm></ContactForm>
       <SectionTitle>Contacts</SectionTitle>
-      <Filter />
-      {isLoading && 'Your contacts are loading, please wait foe a while'}
+      <ContactForm />
+      {isLoading && 'Your contacts are loading, please wait for a while'}
       {error && { error }}
-      {getContacts.length > 0 && <ContactList />}
+      <ContactList />
     </AppWrap>
   );
 }

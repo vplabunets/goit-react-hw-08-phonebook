@@ -1,9 +1,8 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import authOperations from '../../redux/auth/operations';
 import { updateContact } from 'redux/contacts/operations';
-
-import { Button, TextField, Typography } from '@mui/material';
-import { UpdaterForm } from './Updater.styled';
+import { Button, TextField } from '@mui/material';
+import { UpdaterForm, Wrapper } from './Updater.styled';
 
 export default function Udpater({
   closeUpdater,
@@ -12,20 +11,20 @@ export default function Udpater({
   currentNumber,
 }) {
   const dispatch = useDispatch();
+  const [newName, setNewName] = useState(currentName);
+  const [newNumber, setNewNumber] = useState(currentNumber);
+
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const { name, phone } = form.elements;
-
     dispatch(
-      updateContact({ currentId, name: name.value, number: phone.value })
+      updateContact({ id: currentId, name: newName, number: newNumber })
     );
     closeUpdater();
   };
 
   return (
-    <div>
-      <div style={{ display: 'flex' }}>
+    <Wrapper>
+      <div style={{ display: 'flex', margin: '0 auto' }}>
         <h4
           variant="h3"
           component="h2"
@@ -33,12 +32,10 @@ export default function Udpater({
             mb: 1,
           }}
         >
-          <span style={{ fontSize: 25, color: 'blue' }}>{currentName}</span>,
-          you are updating your contact details
+          You are updating{' '}
+          <span style={{ fontSize: 25, color: 'blue' }}>{currentName}</span>{' '}
+          contact details
         </h4>
-        <Button variant="contained" onClick={closeUpdater}>
-          Close updater
-        </Button>
       </div>
       {
         <UpdaterForm type="submit" onSubmit={handleSubmit} autoComplete="off">
@@ -49,29 +46,44 @@ export default function Udpater({
             color="success"
             label="Your updated name"
             margin="normal"
+            value={newName}
+            onChange={e => setNewName(e.currentTarget.value)}
           />
           <TextField
             type="tel"
-            name="phone"
+            name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             variant="outlined"
             label="Your updated phone"
             color="success"
+            value={newNumber}
+            onChange={e => setNewNumber(e.currentTarget.value)}
           />
-
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{
-              mt: 1,
-            }}
-          >
-            Update {currentName} Contact
-          </Button>
+          <div style={{ display: 'flex' }}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                mt: 1,
+                mr: 1,
+              }}
+            >
+              Update {currentName} Contact
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                mt: 1,
+              }}
+              onClick={closeUpdater}
+            >
+              Close updater
+            </Button>
+          </div>
         </UpdaterForm>
       }
-    </div>
+    </Wrapper>
   );
 }

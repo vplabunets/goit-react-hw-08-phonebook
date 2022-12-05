@@ -8,7 +8,7 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 
 const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
-const HomePage = lazy(() => import('../../pages/HomePage'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() =>
   import('../../pages/RegisterPage/RegisterPage')
@@ -17,6 +17,7 @@ const RegisterPage = lazy(() =>
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
   useEffect(() => {
     dispatch(authOperations.refreshUser());
   }, [dispatch]);
@@ -39,7 +40,6 @@ export const App = () => {
             <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
           }
         />
-
         <Route
           path="/contacts"
           element={

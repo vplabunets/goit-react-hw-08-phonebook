@@ -4,8 +4,8 @@ const AppWrap = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  background-color: #8bf3dd;
-  width: 400px;
+  /* background-color: #8bf3dd; */
+  width: 700px;
 `;
 const PageTitle = styled.h1`
   text-align: center;
