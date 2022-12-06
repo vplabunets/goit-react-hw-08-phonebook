@@ -1,7 +1,9 @@
-import { TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { filterContacts } from 'redux/contacts/contactsSlice';
 import { getFilter } from 'redux/contacts/selectors';
+
+import { TextField } from '@mui/material';
 import { FormLabel } from '../Filter/Filter.styled';
 
 export const Filter = () => {

@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
+
 import { useAuth } from 'hooks/useAuth';
+
 import authOperations from '../../redux/auth/operations';
+
 import Button from '@mui/material/Button';
 
 const styles = {
