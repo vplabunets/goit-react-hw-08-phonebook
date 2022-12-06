@@ -1,10 +1,13 @@
-import Udpater from 'components/Updater/Updater';
-import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchContacts } from 'redux/contacts/operations';
 import { getContacts, getFilter } from 'redux/contacts/selectors';
+
+import { Filter } from 'components/Filter/Filter';
+import Udpater from 'components/Updater/Updater';
 import { ContactItem } from '../ContactItem/ContactItem';
+
 import { List } from './ContactList.styled';
 import { styled } from '@mui/material/styles';
 import {
@@ -16,7 +19,7 @@ import {
   TableContainer,
   TableCell,
 } from '@mui/material';
-import { Filter } from 'components/Filter/Filter';
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -33,6 +36,7 @@ export const ContactList = handleOpenUpdater => {
   const [currentName, setcurrentName] = useState(null);
   const [currentNumber, setcurrentNumber] = useState(null);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -57,6 +61,7 @@ export const ContactList = handleOpenUpdater => {
   const closeUpdater = () => {
     setIsOpen(false);
   };
+
   return (
     <div>
       {isOpen && (

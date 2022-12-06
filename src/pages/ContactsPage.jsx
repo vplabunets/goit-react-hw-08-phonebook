@@ -1,17 +1,16 @@
 import { useSelector } from 'react-redux';
-import { getError, getIsLoading } from 'redux/contacts/selectors';
-import { ContactList } from '../components/ContactList/ContactsList';
 
-import { AppWrap, SectionTitle } from '../components/App/App.styled';
-// import { useState } from 'react';
+import { getError, getIsLoading } from 'redux/contacts/selectors';
+
+import { ContactList } from '../components/ContactList/ContactsList';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 
+import { AppWrap, SectionTitle } from '../components/App/App.styled';
+
 export default function ContactsPage() {
-  // const [isOpenUpdater, setIsOpenUpdater] = useState(false);
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
 
-  // const handleOpenUpdater = status => setIsOpenUpdater(status);
   return (
     <AppWrap>
       <SectionTitle>Contacts</SectionTitle>

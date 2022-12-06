@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import authOperations from '../../redux/auth/operations';
+
 import { TextField, Typography, Button } from '@mui/material';
 import { RegisterPageForm } from './RegisterPage.styled';
 
